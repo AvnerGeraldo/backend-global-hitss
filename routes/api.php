@@ -23,3 +23,6 @@ Route::get('/turnos/{id}', 'TurnoController@show');
 Route::post('/turnos', 'TurnoController@store');
 Route::put('/turnos', 'TurnoController@update');
 Route::delete('/turnos/{any?}', 'TurnoController@notAuthorized');
+
+//Batalhas
+Route::post('/batalhas', 'BatalhaController@store');
