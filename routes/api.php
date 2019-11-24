@@ -18,5 +18,7 @@ Route::get('/personagens/{id}', 'PersonagemController@show');
 Route::match(['post', 'put', 'delete'], '/personagens/{any?}', 'PersonagemController@notAuthorized');
 
 //Turnos
+Route::get('/turnos/{id}', 'TurnoController@show');
 Route::post('/turnos', 'TurnoController@store');
 Route::put('/turnos/{id}', 'TurnoController@update');
+Route::delete('/turnos/{any?}', 'TurnoController@notAuthorized');
