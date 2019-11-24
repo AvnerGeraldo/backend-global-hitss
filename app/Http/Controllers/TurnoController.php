@@ -10,6 +10,11 @@ use League\Flysystem\Exception;
 
 class TurnoController extends Controller
 {
+    public function index()
+    {
+        return Jogo::all();
+    }
+
     public function show(Request $request, Response $response, $id)
     {
         return Jogo::find($id)->first();
@@ -44,11 +49,15 @@ class TurnoController extends Controller
         }
     }
 
-    public function update(Request $request, Response $response, $id)
+    public function update(Request $request, Response $response)
     {
         try {
             //Buscar Jogo
-            $jogo = Jogo::find($id);
+            $idJogo = $request->input('id_jogo');
+            if (empty($idJogo))
+                throw new Exception('Informe o identificador do jogo.');
+
+            $jogo = Jogo::find($idJogo);
 
             $dadosJogo = $jogo->first();
 
