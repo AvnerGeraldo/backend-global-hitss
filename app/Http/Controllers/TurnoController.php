@@ -10,6 +10,11 @@ use League\Flysystem\Exception;
 
 class TurnoController extends Controller
 {
+    public function show(Request $request, Response $response, $id)
+    {
+        return Jogo::find($id)->first();
+    }
+
     public function store(Request $request, Response $response)
     {
         try {
@@ -71,5 +76,10 @@ class TurnoController extends Controller
         } catch(Exception $e) {
             return $response->setStatusCode(400, "Erro: {$e->getMessage()}");
         }
+    }
+
+    public function notAuthorized(Response $response) 
+    {
+        return $response->setStatusCode(401, 'Unauthorized');
     }
 }
