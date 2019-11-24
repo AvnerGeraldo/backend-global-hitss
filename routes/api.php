@@ -16,3 +16,7 @@ use Illuminate\Http\Request;
 Route::get('/personagens', 'PersonagemController@index');
 Route::get('/personagens/{id}', 'PersonagemController@show');
 Route::match(['post', 'put', 'delete'], '/personagens/{any?}', 'PersonagemController@notAuthorized');
+
+//Turnos
+Route::post('/turnos', 'TurnoController@store');
+Route::put('/turnos/{id}', 'TurnoController@update');
