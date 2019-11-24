@@ -48,4 +48,9 @@ class BatalhaController extends Controller
             return $response->setStatusCode(400, "Erro: {$e->getMessage()}");
         }
     }
+
+    public function notAuthorized(Response $response) 
+    {
+        return $response->setStatusCode(401, 'Unauthorized');
+    }
 }

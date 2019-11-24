@@ -26,3 +26,4 @@ Route::delete('/turnos/{any?}', 'TurnoController@notAuthorized');
 
 //Batalhas
 Route::post('/batalhas', 'BatalhaController@store');
+Route::match(['get', 'put', 'delete'], '/batalhas/{any?}', 'BatalhaController@notAuthorized');
