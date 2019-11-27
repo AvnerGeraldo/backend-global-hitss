@@ -12,8 +12,10 @@ class BatalhaController extends Controller
     public function store(Request $request, Response $response)
     {
         try {
+            $data = json_decode($request->getContent(), true);
+
             //Buscar Jogo
-            $idJogo = $request->input('id_jogo');
+            $idJogo = $data['id_jogo'];
 
             if (empty($idJogo))
                 throw new Exception('Informe o identificador do Jogo.');
@@ -22,8 +24,8 @@ class BatalhaController extends Controller
             $dadosJogo = $jogo->first();
 
             //Identificar a quem inflingir dano
-            $idPersonagemDano = (int)$request->input('id_personagem_dano');
-            $dano = (int)$request->input('dano');
+            $idPersonagemDano = (int)$data['id_personagem_dano'];
+            $dano = (int)$data['dano'];
 
             if (empty($idPersonagemDano))
                 throw new Exception('Informe o personagem a ser atacado!');
