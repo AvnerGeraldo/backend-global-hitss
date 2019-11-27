@@ -23,7 +23,9 @@ class TurnoController extends Controller
     public function store(Request $request, Response $response)
     {
         try {
-            $idJogadorInicial = $request->input('id_jogador_inicial');
+            $data = json_decode($request->getContent(), true);
+            
+            $idJogadorInicial = $data['id_jogador_inicial'];
             
             if (empty($idJogadorInicial))
                 throw new Exception('Informe o jogador inicial.');
@@ -52,8 +54,10 @@ class TurnoController extends Controller
     public function update(Request $request, Response $response)
     {
         try {
+            $data = json_decode($request->getContent(), true);
+
             //Buscar Jogo
-            $idJogo = $request->input('id_jogo');
+            $idJogo = $data['id_jogo'];
             if (empty($idJogo))
                 throw new Exception('Informe o identificador do jogo.');
 
@@ -65,7 +69,7 @@ class TurnoController extends Controller
                 throw new Exception('Você está tentando atualizar um jogo que não existe! Inicie um primeiro.');
 
             //Id jogador inicial
-            $idJogadorInicial = $request->input('id_jogador_inicial');
+            $idJogadorInicial = $data['id_jogador_inicial'];
 
             if (empty($idJogadorInicial))
                 throw new Exception('Informe o jogador inicial.');
