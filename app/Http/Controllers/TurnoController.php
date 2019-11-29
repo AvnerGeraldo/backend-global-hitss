@@ -17,7 +17,7 @@ class TurnoController extends Controller
 
     public function show(Request $request, Response $response, $id)
     {
-        return Jogo::find($id)->first();
+        return Jogo::where('id', $id)->first();
     }
 
     public function store(Request $request, Response $response)
